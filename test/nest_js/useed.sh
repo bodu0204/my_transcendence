@@ -1,0 +1,1 @@
+npx @nestjs/cli new --strict test_project

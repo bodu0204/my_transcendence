@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="/libs/react.development.js"></script>
+   <script src="/libs/react-dom.development.js"></script>
+   <script src="/libs/babel-standalone.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+	<script>
+		console.log("a----------------------");
+	</script>
+	<script type="text/babel">
+		console.log("b----------------------");
+		const appEL = document.querySelector("#app");
+		const root = ReactDOM.createRoot(appEL);
+		root.render(<h1>hello world</h1>);
+	</script>
+	<script>
+		console.log("c----------------------");
+	</script>
+</body>
+</html>
