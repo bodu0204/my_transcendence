@@ -6,26 +6,16 @@ const Example = () => {
       <h3>コンソールを確認してください。</h3>
       <label>
         入力値のイベント：
-        <input
-          type="text"
-          onChange={() => console.log("onChange検知")}
-          onBlur={() => console.log("onBlur検知")}
-          onFocus={() => console.log("onFocus検知")}
-        />
+      <input type="text" 
+        onChange={function(e){console.log('onChange:',e.target.value);}}
+        onBlur={function(e){console.log('onBlur:',e.target.value);}}
+        onFocus={function(e){console.log('onFocus:',e.target.value);}}
+      ></input>
       </label>
-      {/* <div>
-        <label>
-          入力値を取得：
-          <input type="text" onChange={(e) => console.log(e.target.value)} />
-        </label>
-      </div> */}
-      {/* <div
-        className="hover-event"
-        onMouseEnter={() => console.log("カーソルが入ってきました。")}
-        onMouseLeave={() => console.log("カーソルが出ていきました。")}
-      >
-        ホバーしてね！
-      </div> */}
+      <div className="hover-event"
+        onMouseEnter={function(_){console.log('onMouseEnter');}}
+        onMouseLeave={function(_){console.log('onMouseLeve');}}
+      ></div>
     </div>
   );
 };

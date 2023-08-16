@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 /* POINT useRefでDOMを取得
 refオブジェクトをref属性に渡すとDOMを参照することができます。
@@ -27,8 +27,9 @@ const Case1 = () => {
 
 // POINT 動画の再生・停止を制御
 const Case2 = () => {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const videoRef = useRef();
+  useEffect(()=>{videoRef.current.loop = true; if (playing){videoRef.current.play().catch(e=>{setPlaying(false);});}});
 
   return (
     <div>
@@ -69,7 +70,7 @@ const Case3 = () => {
 
   const updateRef = () => {
     /* コンソールを見るとブラウザの表示と、ref.currentの中身が異なることを確認できます */
-    ref.current = createTimeStamp();
+    ref.current.innerHTML = "ref: " + createTimeStamp();
     console.log("ref.current -> ", ref.current);
   };
   return (
@@ -79,8 +80,7 @@ const Case3 = () => {
         state: {timeStamp}
         <button onClick={updateState}>更新</button>
       </p>
-      <p>
-        ref: {ref.current}
+      <p><p ref={ref}>{"ref: " + createTimeStamp()}</p>
         <button onClick={updateRef}>更新</button>
       </p>
     </div>

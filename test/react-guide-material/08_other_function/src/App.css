@@ -43,7 +43,7 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 
   .App-start,
   .App-end {
-    flex: 0 0 50%;
+    flex: 50%;
     min-height: 100vh;
   }
 }

@@ -1,22 +1,20 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./Example.css";
+import Handler from './components/Header'
+import Main from './components/Main'
+
+export const Context=createContext();
 
 const Example = () => {
   const [theme, setTheme] = useState('light')
   
-  const changeTheme = (e) => setTheme(e.target.value)
-  
-  const THEMES = ['light', 'dark', 'red'];
+  const theme_handler = (e) => setTheme(e.target.value)
 
   return (
-    <>
-      <header className={`content-${theme}`}>
-        
-      </header>
-      <main className={`content-${theme}`}>
-        <h1>テーマの切り替え</h1>
-      </main>
-    </>
+    <Context.Provider value={[theme, theme_handler]}>
+      <Handler/>
+      <Main/>
+    </Context.Provider>
   );
 };
 

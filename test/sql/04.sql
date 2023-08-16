@@ -1,0 +1,1 @@
+DESCRIBE favorite_food;

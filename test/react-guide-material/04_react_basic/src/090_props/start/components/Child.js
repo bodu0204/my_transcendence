@@ -5,10 +5,13 @@
 
 import "./Child.css";
 
-const Child = () => {
+const Child = ({color: c, num:n, func: f, obj:o}) => {
   return (
-    <div className="component">
+    <div className={`component ${c}`}>
       <h3>Hello Component</h3>
+      <h3>{typeof n === 'number' ? n:''}</h3>
+      <h3>{typeof f === 'function'?f():''}</h3>
+      <h3>{typeof o === 'object'?  JSON.stringify(o) : ''}</h3>
     </div>
   );
 };

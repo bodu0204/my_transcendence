@@ -1,13 +1,15 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import Child from "./components/Child";
 import OtherChild from "./components/OtherChild";
-export const MyContext = createContext("hello");
+export const MyContext = createContext();
 
 const Example = () => {
   return (
     <>
-      <Child />
-      <OtherChild />
+      <MyContext.Provider value={useState(0)}>
+        <Child />
+        <OtherChild />
+      </MyContext.Provider>
     </>
   );
 };

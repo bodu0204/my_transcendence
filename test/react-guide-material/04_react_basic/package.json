@@ -18,10 +18,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npx cross-env PORT=3001 react-scripts start",
-    "build": "npx cross-env PORT=3001 react-scripts build",
-    "test": "npx cross-env PORT=3001 react-scripts test",
-    "eject": "npx cross-env PORT=3001 react-scripts eject"
+    "start": "npx cross-env PORT=3000 react-scripts start",
+    "build": "npx cross-env PORT=3000 react-scripts build",
+    "test": "npx cross-env PORT=3000 react-scripts test",
+    "eject": "npx cross-env PORT=3000 react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

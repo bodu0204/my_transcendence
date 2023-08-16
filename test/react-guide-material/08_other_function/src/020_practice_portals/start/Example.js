@@ -1,5 +1,11 @@
 import { useState } from "react";
 import Toast from "./components/Toast";
+import { createPortal } from "react-dom";
+
+function Portal({children:c}){
+  const target = document.querySelector(".container.start");
+  return (createPortal(c, target));
+}
 
 const Example = () => {
   const [toastOpen, setToastOpen] = useState(false);
@@ -21,10 +27,12 @@ const Example = () => {
         トーストを表示する
       </button>
       {toastOpen && (
+        <Portal> 
           <Toast
-            visible={toastOpen}
-            handleCloseClick={() => setToastOpen(false)}
+          visible={toastOpen}
+          handleCloseClick={() => setToastOpen(false)}
           />
+        </Portal>
       )}
     </div>
   );

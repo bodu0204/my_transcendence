@@ -1,8 +1,7 @@
 import Child from "./components/Child";
-
+export const myContext = 'hello';
 const Example = () => {
-  const value = 'hello'
-  return <Child value={value}/>;
+  return <Child/>;
 };
 
 export default Example;

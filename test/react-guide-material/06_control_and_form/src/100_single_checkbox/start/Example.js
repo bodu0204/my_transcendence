@@ -1,10 +1,17 @@
+import {useState} from "react"
+
 const Example = () => {
+const [isChecked, setv] = useState(false);
   return (
-    <p style={{ textAlign: "center" }}>
-      startフォルダの内容が表示されます。
-      <br />
-      練習用に使ってください！
-    </p>
+    <>
+    <input
+    type="checkbox"
+    id ="my-check"
+    checked={isChecked}
+    onChange={(e) => setv(!isChecked)}
+    />
+    <div>{isChecked ? "ON" : "OFF"}</div>
+    </>
   );
 };
 
