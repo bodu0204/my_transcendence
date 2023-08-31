@@ -1,5 +1,5 @@
 CREATE TABLE person
-(person_id SMALLINT UNSIGNED, 
+(person_id SMALLINT UNSIGNED AUTO_INCREMENT, 
 fname VARCHAR(20),
 lname VARCHAR(20),
 eye_color ENUM('BR','BL','GR'), 
