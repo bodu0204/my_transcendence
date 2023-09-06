@@ -5,9 +5,10 @@ const Example = () => {
 
   useEffect(() => {
     console.log('useEffect is called');
-    window.setInterval(() => {
+    const interval=window.setInterval(() => {
       setTime(prev => prev + 1);
     }, 1000);
+    return ()=>clearInterval(interval);
   }, [])
   
   return (
