@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>メッセージ投稿フォーム</title>
+</head>
+<body>
+    <h1>簡易掲示板</h1>
+    <div id="message_bord"></div>
+    <form action="http://localhost:3000/chat" method="post">
+        <label for="name">メッセージ:</label>
+        <input type="text" id="name" name="message" required>
+        <input type="submit" value="投稿">
+    </form>
+    <script>
+        const elm = document.getElementById('message_bord');
+        let line = 0;
+        fetch("http://localhost:3000/chat")
+            .then((data)=>data.json())
+            .then((data)=>setmsg(data));
+        function setmsg(l){
+            console.log(l);
+
+            if (line >= l)
+                return ;
+            fetch(`http://localhost:3000/chat/${line}`)
+            .then((data)=>data.json())
+            .then(
+                    (data)=>{
+                        console.log(data);
+                        elm.insertAdjacentHTML("beforebegin", `<h3>${data.message}</h3>`);
+                        if (l > ++line)
+                            setmsg(l);
+                    }
+                );
+        }
+        const sse = new EventSource("http://localhost:3000/sse");
+        sse.onmessage = ({ data }) => {
+            setmsg(data.line);
+        }    
+  </script>
+</body>
+</html>
