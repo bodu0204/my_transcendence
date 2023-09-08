@@ -3,7 +3,6 @@ import { ChatService } from './chat.service';
 import { join } from 'path';
 import { readFileSync } from 'fs';
 import { Response } from 'express';
-import { Observable } from 'rxjs';
 
 @Controller('chat')
 export class ChatController {
