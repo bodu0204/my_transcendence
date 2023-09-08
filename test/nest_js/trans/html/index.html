@@ -6,7 +6,7 @@
 <body>
     <h1>簡易掲示板</h1>
     <div id="message_bord"></div>
-    <form action="http://localhost:3000/chat" method="post">
+    <form action="/chat" method="post">
         <label for="name">メッセージ:</label>
         <input type="text" id="name" name="message" required>
         <input type="submit" value="投稿">
@@ -14,7 +14,7 @@
     <script>
         const elm = document.getElementById('message_bord');
         let line = 0;
-        fetch("http://localhost:3000/chat")
+        fetch("/chat")
             .then((data)=>data.json())
             .then((data)=>setmsg(data));
         function setmsg(l){
@@ -22,7 +22,7 @@
 
             if (line >= l)
                 return ;
-            fetch(`http://localhost:3000/chat/${line}`)
+            fetch(`/chat/${line}`)
             .then((data)=>data.json())
             .then(
                     (data)=>{
@@ -33,7 +33,7 @@
                     }
                 );
         }
-        const sse = new EventSource("http://localhost:3000/sse");
+        const sse = new EventSource("/sse");
         sse.onmessage = ({ data }) => {
             setmsg(data.line);
         }    
