@@ -3,18 +3,18 @@ import { Subject, Observable } from 'rxjs'
 
 @Injectable()
 export class ChatService {
-    private send :Subject<number>;
+    private send :Subject<MessageEvent>;
     public msg :string[];
-    
-    
+
+
     constructor(){
         this.send = new Subject();
         this.msg = [];
     }
-    
+
     create_connection(): Observable<MessageEvent>{
         const target :Subject<MessageEvent> = new Subject();
-        this.send.subscribe((n)=>{console.log(target.next({data:{line: n}}));});
+        this.send.subscribe(target);
         return target;
     }
 
@@ -26,7 +26,7 @@ export class ChatService {
 
     add_line(message: string): void{
         this.msg.push(message);
-        this.send.next(this.msg.length);
+        this.send.next({data:{line: this.msg.length}});
         return ;
     }
 

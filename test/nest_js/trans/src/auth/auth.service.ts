@@ -15,7 +15,7 @@ export class AuthService {
         data.append('client_id',    this.configService.get<string>('OAUTH_UID'));
         data.append('client_secret',    this.configService.get<string>('OAUTH_SECRET'));
         data.append('code',   authorization_code);
-        data.append('redirect_uri',   Redirect_URI);        
+        data.append('redirect_uri',   Redirect_URI);
         const Init :RequestInit = {
             method: "POST",
             headers: {

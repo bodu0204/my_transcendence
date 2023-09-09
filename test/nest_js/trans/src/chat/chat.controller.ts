@@ -30,5 +30,5 @@ export class ChatController {
     set_message(@Body('message') msg:string){
         this.chat_s.add_line(msg);
     }
-  
+
 }
